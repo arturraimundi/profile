@@ -1,10 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MovieDetail from "./MovieDetail"; // A nova página de detalhes
+import App from "./App"; // A página principal
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+function Main() {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route path="/movie/:id" component={MovieDetail} />
+      </Switch>
+    </Router>
+  );
+}
+
+export default Main;
